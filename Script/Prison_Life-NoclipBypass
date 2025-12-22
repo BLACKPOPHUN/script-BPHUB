@@ -1,0 +1,16 @@
+local ReplicatedStorage = game:GetService("ReplicatedStorage")
+local Players = game:GetService("Players")
+local LocalPlayer = Players.LocalPlayer
+
+local CharacterCollision = ReplicatedStorage.Scripts:FindFirstChild("CharacterCollision")
+
+if CharacterCollision then
+    CharacterCollision:Destroy()
+    local Head = LocalPlayer.Character.Head
+    for _, Connection in getconnections(Head:GetPropertyChangedSignal("CanCollide")) do
+        Connection:Disable()
+    end
+    print("Successfully Bypassed Anti-Noclip! By Tomato")
+else
+    print("Already Bypassed or Failed.")
+end
